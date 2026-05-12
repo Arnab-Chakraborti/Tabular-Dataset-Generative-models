@@ -9,7 +9,7 @@ from torch.utils.data import TensorDataset, DataLoader
 from sklearn.datasets import fetch_california_housing
 from src.model import Generator 
 from src.utils import fast_mmd, boundary_loss
-from src.eval_metrics import lat_long_spread, plot_tsne_overlap, plot_histograms
+from src.eval_metrics import lat_long_spread, plot_tsne_comparison, plot_histograms
 
 DATA_PATH = os.path.join(os.getcwd(), "data", "california_housing.csv")
 if os.path.exists(DATA_PATH):
@@ -148,4 +148,4 @@ print("Generating Distribution comparisons:")
 plot_histograms(reconstr_df,X_test)
 
 #2D visualisation
-#plot_tsne_comparison(X_test, reconstr_df)
+plot_tsne_comparison(X_test, reconstr_df)

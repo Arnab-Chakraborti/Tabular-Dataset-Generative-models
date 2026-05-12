@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
+from sklearn.manifold import TSNE
 
 def lat_long_spread(reconstr_df,X_test):
     fig, ax = plt.subplots(figsize=(10, 7))
@@ -43,7 +45,7 @@ def plot_histograms(df1, df2):
     plt.tight_layout()
     plt.show()
 
-def plot_tsne_overlap(X_test, reconstr_df):
+def plot_tsne_comparison(X_test, reconstr_df):
     real_data = X_test.values
     synth_data = reconstr_df.values
     combined = np.vstack([real_data, synth_data])
