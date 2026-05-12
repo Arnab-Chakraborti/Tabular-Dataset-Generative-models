@@ -6,3 +6,4 @@ __pycache__/
 best_generator.pth
 
 .DS_Store
+.Rhistory
