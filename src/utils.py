@@ -24,3 +24,4 @@ def boundary_loss(fake_data, real_min, real_max):
     low_penalty = torch.relu(real_min - fake_data)
     high_penalty = torch.relu(fake_data - real_max)
     return torch.mean(low_penalty + high_penalty)
+

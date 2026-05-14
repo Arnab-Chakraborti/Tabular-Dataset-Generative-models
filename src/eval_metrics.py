@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 from sklearn.manifold import TSNE
+import math
 
 def lat_long_spread(reconstr_df,X_test):
     fig, ax = plt.subplots(figsize=(10, 7))
@@ -34,7 +35,8 @@ def lat_long_spread(reconstr_df,X_test):
     plt.legend()
 
     plt.show()
-    
+
+        
 def plot_histograms(df1, df2):
     fig, axes = plt.subplots(1, len(df1.columns), figsize=(20, 5))
     for i, col in enumerate(df1.columns):
@@ -42,6 +44,32 @@ def plot_histograms(df1, df2):
         df2[col].hist(ax=axes[i], alpha=0.5, color='red', label='Real')
         axes[i].set_title(col)
         axes[i].legend()
+    plt.tight_layout()
+    plt.show()
+
+def plot_kde(reconstr_df,X_test):
+    n = len(reconstr_df.columns)
+    rows = math.ceil(n / 2)
+
+    plt.figure(figsize=(12, 2 * rows))
+
+    for i, col in enumerate(reconstr_df.columns, 1):
+        plt.subplot(rows, 2, i)
+
+        reconstr_df[col].plot.kde(
+        bw_method='scott',
+        label='Reconstructed'
+    )
+
+        X_test[col].plot.kde(
+        bw_method='scott',
+        color='red',
+        label='Real'
+    )
+
+    plt.title(col)
+    plt.legend()
+
     plt.tight_layout()
     plt.show()
 
